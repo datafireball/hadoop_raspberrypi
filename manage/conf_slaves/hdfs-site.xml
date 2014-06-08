@@ -1,0 +1,6 @@
+<configuration>
+  <property>
+      <name>dfs.datanode.data.dir</name>
+      <value>/data1,/data2</value>
+  </property>
+</configuration>

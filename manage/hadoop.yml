@@ -1,0 +1,51 @@
+---
+- hosts: cluster
+  remote_user: root
+  tasks: 
+  - name: create /etc/hosts file
+    copy: src=/root/manage/conf_cluster/hosts 
+          dest=/etc/hosts owner=root group=root mode=644
+  - name: environment variables set up
+    copy: src=/root/manage/conf_cluster/env.sh
+          dest=/etc/profile.d/env.sh
+          owner=root
+          group=root
+          mode=644
+  - name: sync hadoop configuration files
+    copy: src=/root/manage/conf_cluster/{{  item  }} 
+          dest=/root/hadoop-2.2.0/etc/hadoop/{{  item  }}
+    with_items:
+    - core-site.xml
+    - mapred-site.xml
+    - slaves
+    - yarn_include.txt
+
+- hosts: namenode
+  remote_user: root
+  tasks:
+  - name: copy to namenode
+    copy: src=/root/manage/conf_namenode/{{  item  }} 
+          dest=/root/hadoop-2.2.0/etc/hadoop/{{  item  }}
+    with_items:
+    - hdfs-site.xml
+
+
+- hosts: resourcemanager
+  remote_user: root
+  tasks:
+  - name: copy to resource manager
+    copy: src=/root/manage/conf_resourcemanager/{{  item  }} 
+          dest=/root/hadoop-2.2.0/etc/hadoop/{{  item  }}
+    with_items:
+    - yarn-site.xml
+
+
+- hosts: slaves
+  remote_user: root
+  tasks:
+  - name: copy to slaves
+    copy: src=/root/manage/conf_slaves/{{  item  }} 
+          dest=/root/hadoop-2.2.0/etc/hadoop/{{  item  }}
+    with_items:
+    - hdfs-site.xml
+    - yarn-site.xml

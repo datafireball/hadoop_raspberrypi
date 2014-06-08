@@ -1,0 +1,5 @@
+127.0.0.1       localhost localhost.localdomain pidora.local
+192.168.0.101	datafireball1	node1
+192.168.0.102   datafireball2   node2
+192.168.0.103   datafireball3   node3
+192.168.0.104   datafireball4   node4

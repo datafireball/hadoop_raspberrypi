@@ -1,0 +1,10 @@
+<configuration>
+  <property>
+      <name>fs.defaultFS</name>
+      <value>hdfs://node1:8020</value>
+  </property>
+  <property>
+      <name>io.file.buffer.size</name>
+      <value>4096</value>
+  </property>
+</configuration>

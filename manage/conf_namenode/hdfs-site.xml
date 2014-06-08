@@ -1,0 +1,10 @@
+<configuration>
+  <property>
+      <name>dfs.blocksize</name>
+      <value>32m</value>
+  </property>
+  <property>
+      <name>dfs.namenode.handler.count</name>
+      <value>5</value>
+  </property>
+</configuration>
